@@ -1,5 +1,6 @@
-from flask import Flask
 import os
+
+from flask import Flask
 
 from src.auth import auth
 from src.bookmarks import bookmarks
@@ -19,7 +20,7 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    db.app = app
+    db.app = app  # type: ignore
     db.init_app(app)
     app.register_blueprint(auth)
     app.register_blueprint(bookmarks)
